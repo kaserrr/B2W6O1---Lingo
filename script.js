@@ -9,10 +9,10 @@ function wordBoxes() {
 	var ul = document.createElement("ul");
 
 	for (i = 0; i < 5; i++) {
-		var li = document.createElement("li");
+		let li = document.createElement("li");
 		li.id = "letter" + i;
 		console.log(li)
-		li.innerHTML = word[i];
+		
 		ul.appendChild(li);
 	}
 	document.getElementById("letter").appendChild(ul);
@@ -25,9 +25,13 @@ function check() {
 
 	for (var i = 0; i < 5; i++) {
 		if (inputWord[i] == word[i]) {
-			
+			document.getElementById(`letter${i}`).innerHTML = inputWord[i];
+			document.getElementById(`letter${i}`).style.backgroundColor = "green";
+		} else if (word.includes(inputWord[i])){
+			document.getElementById(`letter${i}`).innerHTML = inputWord[i];
+			document.getElementById(`letter${i}`).style.backgroundColor = "orange";			
 		} else {
-			alert("no");
+			
 		}
 	}
 }

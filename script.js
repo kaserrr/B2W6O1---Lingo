@@ -1,5 +1,7 @@
 var randomWord = words[Math.floor(Math.random() * words.length)];
 var word = randomWord.split("");
+var input = document.getElementById("input").value;
+var inputWord = input.split("");
 var guess = 0;
 console.log(randomWord);
 console.log(word);
@@ -21,8 +23,6 @@ function wordBoxes() {
 }
 
 function check() {
-	var input = document.getElementById("input").value;
-	var inputWord = input.split("");
 	console.log(inputWord)
 
 	for (var i = 0; i < 5; i++) {
@@ -36,19 +36,21 @@ function check() {
 			document.getElementById(`letter${i}`).innerHTML = " ";		
 		}
 	}
+	if (inputWord.every(element == word) ) {
+		var win = true;
+		console.log()
+	    setTimeout(function(){
+	        alert("Je hebt het woord goed geraden!");
+	        location.reload();},1000)
+	}
+
+	if (win != true) {
+		wordBoxes();
+	}
+
+	if (guess === 5) {
+		setTimeout(function(){
+	        alert("Het juiste woord was " + randomWord);
+	        location.reload();},1000)
+	}
 }
-
-if (inputWord.every(element => element ==="")) {
-	var win = true;
-    setTimeout(function(){
-        alert("Je hebt het woord goed geraden!");
-        location.reload();},5000)
-}
-
-
-if (guess === 5) {
-	setTimeout(function(){
-        alert("Het juiste woord was " + randomWord);
-        location.reload();},5000)
-}
-
